@@ -1,5 +1,6 @@
 package com.javamaster.rest_controller;
 
+import com.javamaster.model.Message;
 import com.javamaster.producer.ProducerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -15,7 +16,7 @@ public class ControllerV1 {
     }
 
     @GetMapping("/generate")
-    public String generate(@RequestParam String message) {
+    public String generate(@RequestBody Message message) {
         producerService.produce(message);
         return "OK";
     }
